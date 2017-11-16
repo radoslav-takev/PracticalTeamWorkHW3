@@ -41,7 +41,7 @@ public class Engine {
             List<String> commandParams = this.inputParser.parseInput(inputLine);
             try {
                 this.dispatchCommand(commandParams, initialList);
-                this.outputWriter.writeLine(this.commandManager.printList());
+
 
             } catch (InvalidParameterException ipe) {
                 this.outputWriter.writeLine(ipe.getMessage());
@@ -59,6 +59,7 @@ public class Engine {
         switch(commandParams.get(0)) {
             case "roll":
                 this.commandManager.rollList(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
                 break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);
