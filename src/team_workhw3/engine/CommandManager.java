@@ -1,9 +1,12 @@
 package team_workhw3.engine;
 
+import team_workhw3.utilities.Constants;
+
+import java.security.InvalidParameterException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CommandManager {
+class CommandManager {
 
     private List<String> list;
 
@@ -11,10 +14,36 @@ public class CommandManager {
         this.list = new LinkedList<>();
     }
 
-    protected void addCollectionToList(List<String> listToAdd){
+    void addCollectionToList(List<String> listToAdd){
         this.list.addAll(listToAdd);
     }
 
+    String printList() {
+        return String.join(" ", this.list);
+    }
+
+    void rollList(List<String> commandParams) {
+        if (commandParams.size() == 2){
+
+            switch(commandParams.get(1)){
+                case "left":
+                    String firstElement = this.list.get(0);
+                    this.list.add(firstElement);
+                    this.list.remove(0);
+                    return;
+
+                case "right":
+                    String lastElement = this.list.get(this.list.size()-1);
+                    this.list.add(0, lastElement);
+                    this.list.remove(this.list.size()-1);
+                    return;
+            }
+        }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
+    }
+
+
     //TO DO COMMANDS
+
 
 }
