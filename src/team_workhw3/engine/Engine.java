@@ -28,9 +28,9 @@ public class Engine {
         String inputLine = this.inputReader.readLine();
 
         List<String> initialList = this.inputParser.parseInput(inputLine);
-        this.commandManager.addCollectionToList(initialList);
 
-       this.outputWriter.writeLine(this.commandManager.printList());
+        this.commandManager.addCollectionToList(initialList);
+        this.outputWriter.writeLine(this.commandManager.printList());
 
         while(true) {
             inputLine = this.inputReader.readLine();
@@ -40,8 +40,7 @@ public class Engine {
 
             List<String> commandParams = this.inputParser.parseInput(inputLine);
             try {
-                this.dispatchCommand(commandParams, initialList);
-
+                this.dispatchCommand(commandParams);
 
             } catch (InvalidParameterException ipe) {
                 this.outputWriter.writeLine(ipe.getMessage());
@@ -54,7 +53,7 @@ public class Engine {
 
 
 
-    private void dispatchCommand(List<String> commandParams, List<String> initialList) {
+    private void dispatchCommand(List<String> commandParams) {
 
         switch(commandParams.get(0)) {
             case "roll":
