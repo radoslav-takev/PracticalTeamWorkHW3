@@ -60,6 +60,10 @@ public class Engine {
                 this.commandManager.rollList(commandParams);
                 this.outputWriter.writeLine(this.commandManager.printList());
                 break;
+            case "insert":
+                this.commandManager.insertString(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);
 
