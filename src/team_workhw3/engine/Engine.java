@@ -35,6 +35,7 @@ public class Engine {
         while(true) {
             inputLine = this.inputReader.readLine();
             if (Constants.TERMINATING_COMMAND.equals(inputLine)) {
+                System.out.println("Finished");
                 break;
             }
 
