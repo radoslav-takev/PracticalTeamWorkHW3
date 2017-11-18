@@ -59,6 +59,14 @@ class CommandManager {
         }
         throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
+	void sort(List<String> commandParams){
+        if (commandParams.size() == 1) {
+            Collections.sort(this.list);
+            return;
+        }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
+    }
+	
 
     //TO DO COMMANDS
 

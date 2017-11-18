@@ -69,6 +69,10 @@ public class Engine {
                 this.commandManager.reverse(commandParams);
                 this.outputWriter.writeLine(this.commandManager.printList());
                 break;
+			case "sort":
+                this.commandManager.sort(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);
 
