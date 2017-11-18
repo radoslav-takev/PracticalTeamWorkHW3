@@ -43,14 +43,14 @@ class CommandManager {
     }
     void insertString(List<String> commandParams) {
         if (commandParams.size() == 3) {
-            int index = Integer.parseInt(commandParams.get(1));
-            if (index > 0 && index < this.list.size() - 1) {
-                this.list.add(index - 1, commandParams.get(2));
-            } else {
-                System.out.printf("Error: invalid index %d%n",index);
+            try {
+                int index = Integer.parseInt(commandParams.get(1));
+                this.list.add(index, commandParams.get(2));
+                return;
+            } catch (Exception e) {
+                throw new InvalidParameterException(String.format("Error: invalid index %s", commandParams.get(1)));
             }
         }
-        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
 
     //TO DO COMMANDS
