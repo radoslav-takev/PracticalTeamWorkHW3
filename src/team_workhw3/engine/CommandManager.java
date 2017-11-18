@@ -52,6 +52,13 @@ class CommandManager {
             }
         }
     }
+	void reverse(List<String> commandParams){
+        if (commandParams.size() == 1) {
+            Collections.reverse(this.list);
+            return;
+        }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
+    }
 
     //TO DO COMMANDS
 

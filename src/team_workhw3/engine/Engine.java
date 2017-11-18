@@ -65,6 +65,10 @@ public class Engine {
                 this.commandManager.insertString(commandParams);
                 this.outputWriter.writeLine(this.commandManager.printList());
                 break;
+			case "reverse":
+                this.commandManager.reverse(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);
 
