@@ -45,12 +45,13 @@ class CommandManager {
         if (commandParams.size() == 3) {
             try {
                 int index = Integer.parseInt(commandParams.get(1));
-                this.list.add(index, commandParams.get(2));
+                this.list.add(index -1, commandParams.get(2));
                 return;
             } catch (Exception e) {
                 throw new InvalidParameterException(String.format("Error: invalid index %s", commandParams.get(1)));
             }
         }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
 	void reverse(List<String> commandParams){
         if (commandParams.size() == 1) {
