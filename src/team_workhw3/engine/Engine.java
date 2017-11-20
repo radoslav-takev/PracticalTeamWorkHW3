@@ -86,7 +86,7 @@ public class Engine {
                 this.outputWriter.writeLine(this.commandManager.printList());
                 break;
             case "count":
-                this.commandManager.count(commandParams);
+                System.out.println(this.commandManager.count(commandParams));
                 break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);

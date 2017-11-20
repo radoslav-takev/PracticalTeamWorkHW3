@@ -99,7 +99,7 @@ class CommandManager {
         throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
 
-    void count(List<String> commandParams) {
+    String count(List<String> commandParams) {
         int counter = 0;
         if (commandParams.size() == 2) {
             String searchText = commandParams.get(1);
@@ -108,10 +108,11 @@ class CommandManager {
                     counter++;
                 }
             }
-            System.out.println(counter);
+            return String.valueOf(counter);
         }
+
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
-    //TO DO COMMANDS
 
 
 }
