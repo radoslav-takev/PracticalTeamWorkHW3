@@ -75,7 +75,7 @@ class CommandManager {
             this.list.add(list.size(), text);
             return;
         }
-
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
 
     void prepend(List<String> commandParams) {
@@ -84,6 +84,7 @@ class CommandManager {
             this.list.add(0, text);
             return;
         }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
 	
     void delete(List<String> commandParams) {
