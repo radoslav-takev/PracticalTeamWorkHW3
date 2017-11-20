@@ -57,6 +57,14 @@ public class Engine {
     private void dispatchCommand(List<String> commandParams) {
 
         switch(commandParams.get(0)) {
+            case "append":
+                this.commandManager.append(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
+            case "prepend":
+                this.commandManager.prepend(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
             case "roll":
                 this.commandManager.rollList(commandParams);
                 this.outputWriter.writeLine(this.commandManager.printList());
@@ -73,10 +81,16 @@ public class Engine {
                 this.commandManager.sort(commandParams);
                 this.outputWriter.writeLine(this.commandManager.printList());
                 break;
+            case "delete":
+                this.commandManager.delete(commandParams);
+                this.outputWriter.writeLine(this.commandManager.printList());
+                break;
+            case "count":
+                this.commandManager.count(commandParams);
+                break;
             default:
                 throw new IllegalArgumentException(Constants.ERROR_INVALID_COMMAND);
 
         }
     }
-
 }

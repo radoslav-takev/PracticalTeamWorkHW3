@@ -3,6 +3,7 @@ package team_workhw3.engine;
 import team_workhw3.utilities.Constants;
 
 import java.security.InvalidParameterException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,8 +68,49 @@ class CommandManager {
         }
         throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
     }
-	
 
+    void append(List<String> commandParams) {
+        if (commandParams.size() == 2) {
+            String text = commandParams.get(1);
+            this.list.add(list.size(), text);
+            return;
+        }
+
+    }
+
+    void prepend(List<String> commandParams) {
+        if (commandParams.size() == 2) {
+            String text = commandParams.get(1);
+            this.list.add(0, text);
+            return;
+        }
+    }
+	
+    void delete(List<String> commandParams) {
+        if (commandParams.size() == 2) {
+            try {
+                int index = Integer.parseInt(commandParams.get(1));
+                this.list.remove(index);
+                return;
+            } catch (Exception e) {
+                throw new InvalidParameterException(String.format("Error: invalid index %s", commandParams.get(1)));
+            }
+        }
+        throw new InvalidParameterException(Constants.ERROR_INVALID_COMMAND_PARAMETER);
+    }
+
+    void count(List<String> commandParams) {
+        int counter = 0;
+        if (commandParams.size() == 2) {
+            String searchText = commandParams.get(1);
+            for (int i = 0; i < this.list.size(); i++) {
+                if (searchText.equals(this.list.get(i))) {
+                    counter++;
+                }
+            }
+            System.out.println(counter);
+        }
+    }
     //TO DO COMMANDS
 
 
